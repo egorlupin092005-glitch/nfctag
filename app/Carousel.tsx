@@ -1,0 +1,19 @@
+'use client';
+import {imageSources} from './media';
+import {useRef,useState,useId,useEffect} from 'react';
+import type {Work} from './data';
+export default function Carousel({works,label}:{works:Work[];label:string}){
+const [active,setActive]=useState(0),[zoom,setZoom]=useState(0);const track=useRef<HTMLDivElement>(null),dialog=useRef<HTMLDialogElement>(null);const id=useId();
+useEffect(()=>{const el=track.current;if(!el)return;const slide=el.children[active] as HTMLElement;const update=()=>{el.style.height=slide.offsetHeight+'px'};const observer=new ResizeObserver(update);observer.observe(slide);update();return()=>observer.disconnect()},[active]);
+function go(n:number){const el=track.current;if(!el)return;const index=Math.max(0,Math.min(works.length-1,n));const child=el.children[index] as HTMLElement;el.scrollTo({left:child.getBoundingClientRect().left-el.getBoundingClientRect().left+el.scrollLeft,behavior:(document.documentElement.dataset.motion==='off'||(document.documentElement.dataset.motion!=='on'&&matchMedia('(prefers-reduced-motion: reduce)').matches))?'instant':'smooth'});}
+function onScroll(){const el=track.current;if(!el)return;let closest=0,distance=Infinity;Array.from(el.children).forEach((node,i)=>{const d=Math.abs((node as HTMLElement).getBoundingClientRect().left-el.getBoundingClientRect().left);if(d<distance){distance=d;closest=i}});setActive(closest)}
+function open(i:number){setZoom(i);dialog.current?.showModal()}
+return <div className="carousel" role="region" aria-roledescription="карусель" aria-label={label}>
+<div ref={track} id={id} className="carousel-track" tabIndex={0} aria-label={"Фотографии: "+label} onScroll={onScroll} onKeyDown={e=>{if(e.key==='ArrowRight'){e.preventDefault();go(active+1)}if(e.key==='ArrowLeft'){e.preventDefault();go(active-1)}}}>
+{works.map((work,i)=><figure className="slide" data-active={i===active} key={work.src} role="group" aria-roledescription="слайд" aria-label={`${i+1} из ${works.length}: ${work.title}`}><button className="slide-image" onClick={()=>open(i)} aria-label={`Увеличить: ${work.title}`}><img src={work.src} srcSet={imageSources(work.src,work.width)} sizes="(max-width:600px) 95vw, (max-width:1000px) 80vw, 900px" alt={work.title+' — '+work.caption} loading="lazy" width={work.width} height={work.height}/><span className="zoom-label" aria-hidden="true">↗</span></button><figcaption><div><h3>{work.title}</h3></div>{work.pdf&&<a className="pdf-link" href={work.pdf} target="_blank" rel="noopener noreferrer" aria-label={'Открыть PDF: '+work.title}>PDF ↗</a>}</figcaption></figure>)}
+</div><div className="carousel-bottom"><div className="slide-dots" aria-label="Выбор слайда">{works.map((work,i)=><button key={work.src} onClick={()=>go(i)} aria-label={`Слайд ${i+1}: ${work.title}`} aria-current={i===active?'true':undefined}><span/></button>)}</div><div className="carousel-controls"><span className="slide-count" aria-live="polite">{active+1} <i>/ {works.length}</i></span><button onClick={()=>go(active-1)} disabled={active===0} aria-label={'Предыдущий слайд: '+label} aria-controls={id}>←</button><button onClick={()=>go(active+1)} disabled={active===works.length-1} aria-label={'Следующий слайд: '+label} aria-controls={id}>→</button></div></div>
+<dialog ref={dialog} className="lightbox" aria-label={'Просмотр: '+label} onClick={e=>{if(e.target===e.currentTarget)dialog.current?.close()}}><div className="lightbox-inner"><button className="close" onClick={()=>dialog.current?.close()} aria-label="Закрыть изображение">✕</button><img key={works[zoom].src} src={works[zoom].src} alt={works[zoom].title}/><div className="lightbox-caption"><button onClick={()=>setZoom((zoom+works.length-1)%works.length)} aria-label="Предыдущее изображение">←</button><p>{works[zoom].title}<small>{zoom+1} / {works.length}</small></p><button onClick={()=>setZoom((zoom+1)%works.length)} aria-label="Следующее изображение">→</button></div></div></dialog>
+</div>}
+
+
+

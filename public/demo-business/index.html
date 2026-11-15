@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Личная визитка — демонстрация NFCtag</title>
+  <meta name="description" content="Пример личного сайта-визитки, который открывается с NFC-карточки. Проекты, контакты и знакомство в одном месте.">
+  <meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#101e2a">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css?v=20261115-r2">
+</head>
+<body data-theme="ink">
+  <div class="demo-bar"><a href="/#business" class="demo-brand" aria-label="Вернуться к NFCtag">NFCtag <span>/ демо</span></a><span>Демонстрационный профиль</span><button class="demo-info" data-modal="about">Как это работает <span>↗</span></button></div>
+  <main id="top">
+    <header class="profile-header"><a href="#top" class="wordmark" aria-label="В начало">ам<span>·</span></a><nav aria-label="Навигация"><a href="#projects">Направления</a><a href="#contact">На связи</a></nav><button class="share-top icon-button" data-share aria-label="Поделиться страницей"><svg viewBox="0 0 24 24"><path d="M12 16V3m-4 4 4-4 4 4M5 12v8h14v-8"/></svg></button></header>
+    <section class="hero">
+      <div class="identity-art">
+        <div class="art-label"><span>ЛИЧНОЕ ЗНАКОМСТВО</span><span>01 / NFC</span></div>
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="art-initials" aria-hidden="true">А<span>М</span></div>
+        <div class="physical-card" id="physical-card" tabindex="0" role="button" aria-label="Повернуть демонстрационную NFC-карточку" aria-pressed="false">
+          <div class="card-face card-front"><span class="card-eyebrow">PERSONAL CONNECTION</span><span class="card-monogram">ам<span>·</span></span><div class="card-name">Александр<br>Миронов</div><div class="card-foot"><span>Дизайнер</span><svg viewBox="0 0 40 30" aria-hidden="true"><path d="M7 12q5 3 0 6m7-12q12 9 0 18m8-24q19 15 0 30"/></svg></div></div>
+          <div class="card-face card-back"><span class="card-eyebrow">ЗНАКОМСТВО ПРОДОЛЖАЕТСЯ</span><span class="back-title">Всё важное.<br>В одном касании.</span><span class="back-note">NFC открывает эту страницу.<br>QR добавим при изготовлении.</span><span class="card-demo">ДИЗАЙН-КОНЦЕПЦИЯ</span></div>
+        </div>
+        <button class="rotate-hint" id="rotate-hint">Повернуть карточку <span>↻</span></button>
+        <div class="art-bottom"><span>Личная NFC-карточка</span><span>Дизайн-пример</span></div>
+      </div>
+      <div class="hero-copy"><p class="eyebrow"><span></span>Дизайнер · цифровые сервисы</p><h1>Александр<br><em>Миронов.</em></h1><p class="intro">Проектирую сайты,<br>которыми удобно пользоваться.</p><p class="description">Откройте работающие концепции, сохраните контакт или подготовьте предложение о проекте. Имя и профиль в этом примере вымышлены.</p><div class="tags" aria-label="Направления"><span>Сайты</span><span>Клиентские сервисы</span><span>Дизайн</span></div><a href="#contact" class="primary-link">Давайте познакомимся <span>↗</span></a><div class="quick-actions"><button id="save-contact"><svg viewBox="0 0 24 24"><path d="M5 3h14v18H5zM8 6h4m-4 3h4m-4 8h8m-7-4h6"/></svg>Сохранить контакт</button><button data-share><svg viewBox="0 0 24 24"><path d="M12 15V3m-4 4 4-4 4 4M5 12v8h14v-8"/></svg>Поделиться</button></div><p class="contact-note">В демо скачивается пример контакта без реального номера.</p></div>
+    </section>
+    <section class="projects section" id="projects"><div class="section-heading"><p class="eyebrow">Работающие концепции</p><h2>Три разных<br><em>сценария.</em></h2><p>Откройте пример.<br>В каждом можно что-то сделать.</p></div><div class="project-list"><a class="project-row" href="../demos/menu/"><span class="project-index">01</span><div><h3>Бистро «Сезон»</h3><p>Ресторанное меню, избранное и бронь</p></div><span class="row-arrow">↗</span></a><a class="project-row" href="../demos/memo/"><span class="project-index">02</span><div><h3>Форма · личный гид</h3><p>Предмет, получение, уход и обращения</p></div><span class="row-arrow">↗</span></a><a class="project-row" href="../demos/request/"><span class="project-index">03</span><div><h3>Форма · запись</h3><p>Услуги, календарь и панель команды</p></div><span class="row-arrow">↗</span></a></div></section><section class="contact section" id="contact"><div class="section-heading"><p class="eyebrow">02 / НА СВЯЗИ</p><h2>Продолжим<br><em>знакомство?</em></h2><p>В вашей версии здесь будут<br>личные контакты и рабочие ссылки.</p></div><div class="contact-links"><button class="contact-link" data-modal="telegram"><span class="contact-icon">↗</span><span><strong>Написать в Telegram</strong><small>Быстрый способ начать разговор</small></span><span class="row-arrow">↗</span></button><button class="contact-link" data-modal="email"><span class="contact-icon">@</span><span><strong>Обсудить проект по почте</strong><small>Для предложений и подробностей</small></span><span class="row-arrow">↗</span></button><button class="contact-link" data-modal="social"><span class="contact-icon">◎</span><span><strong>Личный профиль</strong><small>Публикации, идеи и жизнь проектов</small></span><span class="row-arrow">↗</span></button></div></section>
+    <aside class="demo-controls"><div><p class="eyebrow">ВАШ ХАРАКТЕР. ВАШЕ ОФОРМЛЕНИЕ.</p><p>Карточка и страница — в одном стиле.</p></div><fieldset><legend>Посмотреть другой цвет</legend><button class="theme-swatch ink active" data-palette="ink" aria-label="Тёмный синий" aria-pressed="true"></button><button class="theme-swatch light" data-palette="light" aria-label="Светлый камень" aria-pressed="false"></button><button class="theme-swatch plum" data-palette="plum" aria-label="Сливовый" aria-pressed="false"></button></fieldset><a href="https://t.me/whismym1?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BB%D0%B8%D1%87%D0%BD%D1%83%D1%8E%20NFC-%D0%B2%D0%B8%D0%B7%D0%B8%D1%82%D0%BA%D1%83%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%BE%D0%BC." target="_blank" rel="noopener noreferrer">Обсудить свою визитку <span>↗</span></a></aside>
+  </main>
+  <footer><a href="/#business" class="demo-brand" aria-label="Вернуться к NFCtag">NFCtag</a><span>Демонстрация личного сайта-визитки</span><span>Одно касание. Новое знакомство.</span></footer>
+  <dialog id="detail-dialog"><button class="dialog-close icon-button" id="close-dialog" aria-label="Закрыть">×</button><p class="eyebrow" id="dialog-eyebrow">ДЕМОНСТРАЦИЯ</p><h2 id="dialog-title"></h2><p id="dialog-copy"></p><a id="dialog-link" class="primary-link" href="https://t.me/whismym1" target="_blank" rel="noopener noreferrer">Обсудить свою версию <span>↗</span></a></dialog>
+  <div id="toast" role="status" aria-live="polite"></div><script src="app.js?v=20261115-r2"></script>
+</body>
+</html>
